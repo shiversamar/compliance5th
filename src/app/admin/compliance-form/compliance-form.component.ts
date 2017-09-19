@@ -1,6 +1,7 @@
 import { CompanyService } from '../../services/auth/company.service';
 import { Component, OnInit } from '@angular/core';
 import { ComplianceService } from '../../services/auth/compliance/compliance.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compliance-form',
@@ -10,14 +11,18 @@ import { ComplianceService } from '../../services/auth/compliance/compliance.ser
 export class ComplianceFormComponent implements OnInit {
   companies$;
 
-  constructor(companyService: CompanyService,
-  private complianceService: ComplianceService ) { 
+  constructor(
+    private router: Router,
+    private companyService: CompanyService,
+    private complianceService: ComplianceService ) { 
     this.companies$ = companyService.getCompanies();
   }
 
 
   save(compliance) {
     this.complianceService.create(compliance);
+    this.router.navigate(['/admin/products']);
+
   }
 
   ngOnInit() {
