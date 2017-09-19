@@ -56,7 +56,7 @@ import { AdminRequestComponent } from './admin/admin-request/admin-request.compo
       { path: 'my-request', component: MyRequestComponent, canActivate:[AuthGuardService]},
 
       { path: 'admin/compliance', component: AdminComplianceComponent,canActivate:[AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/request', component: AdminRequestComponent,canActivate:[AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/request', component: AdminRequestComponent,canActivate:[AuthGuardService, AdminAuthGuardService] }
     ])
 
 
