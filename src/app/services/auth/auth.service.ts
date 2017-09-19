@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import * as firebase from 'firebase';
+// import { AppUser } from '../../models/app-user';
 
 
 @Injectable()

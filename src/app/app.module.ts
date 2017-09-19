@@ -2,16 +2,23 @@ import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule} from 'angularfire2/database'
+import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
+
+import { AppUser } from '/Users/amar/Desktop/compliance5th/src/app/models/app-user';
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/auth/user.service';
 import { AdminAuthGuardService } from './services/auth/admin-auth-guard.service';
+import { CompanyService } from './services/auth/company.service';
+import { ComplianceService } from './services/auth/compliance/compliance.service';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +31,9 @@ import { MyRequestComponent } from './my-request/my-request.component';
 import { SubmitSuccessComponent } from './submit-success/submit-success.component';
 import { AdminComplianceComponent } from './admin/admin-compliance/admin-compliance.component';
 import { AdminRequestComponent } from './admin/admin-request/admin-request.component';
+import { ComplianceFormComponent } from './admin/compliance-form/compliance-form.component';
+
+
 
 @NgModule({
   declarations: [
@@ -37,10 +47,13 @@ import { AdminRequestComponent } from './admin/admin-request/admin-request.compo
     MyRequestComponent,
     SubmitSuccessComponent,
     AdminComplianceComponent,
-    AdminRequestComponent
+    AdminRequestComponent,
+    ComplianceFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
@@ -51,12 +64,29 @@ import { AdminRequestComponent } from './admin/admin-request/admin-request.compo
       { path: 'compliance-cart', component: ComplianceCartComponent },
       { path: 'login', component: LoginComponent },
 
-      { path: 'check-list', component: CheckListComponent, canActivate:[AuthGuardService] },
-      { path: 'submitsuccess', component: SubmitSuccessComponent, canActivate:[AuthGuardService]},
-      { path: 'my-request', component: MyRequestComponent, canActivate:[AuthGuardService]},
+      { path: 'check-list', component: CheckListComponent, canActivate: [AuthGuardService] },
+      { path: 'submitsuccess', component: SubmitSuccessComponent, canActivate: [AuthGuardService] },
+      { path: 'my-request', component: MyRequestComponent, canActivate: [AuthGuardService] },
 
-      { path: 'admin/compliance', component: AdminComplianceComponent,canActivate:[AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/request', component: AdminRequestComponent,canActivate:[AuthGuardService, AdminAuthGuardService] }
+      {
+        path: 'admin/compliance',
+        component: AdminComplianceComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+
+      {
+        path: 'admin/compliance/new',
+        component: ComplianceFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+
+
+
+      {
+        path: 'admin/request',
+        component: AdminRequestComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      }
     ])
 
 
@@ -64,12 +94,15 @@ import { AdminRequestComponent } from './admin/admin-request/admin-request.compo
 
 
   ],
-  providers: [ 
-  AuthService,
-  AuthGuardService,
-  UserService,
-  AdminAuthGuardService
-],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    UserService,
+    AdminAuthGuardService,
+    CompanyService,
+    ComplianceService
+
+  ],
 
   bootstrap: [AppComponent]
 })
