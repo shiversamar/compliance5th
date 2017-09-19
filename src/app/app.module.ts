@@ -1,0 +1,76 @@
+import { environment } from './../environments/environment';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database'
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuardService } from './services/auth/auth-guard.service';
+import { UserService } from './services/auth/user.service';
+import { AdminAuthGuardService } from './services/auth/admin-auth-guard.service';
+
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CheckListComponent } from './check-list/check-list.component';
+import { ComplianceCartComponent } from './compliance-cart/compliance-cart.component';
+import { CompliancesComponent } from './compliances/compliances.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { MyRequestComponent } from './my-request/my-request.component';
+import { SubmitSuccessComponent } from './submit-success/submit-success.component';
+import { AdminComplianceComponent } from './admin/admin-compliance/admin-compliance.component';
+import { AdminRequestComponent } from './admin/admin-request/admin-request.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    CheckListComponent,
+    ComplianceCartComponent,
+    CompliancesComponent,
+    HomeComponent,
+    LoginComponent,
+    MyRequestComponent,
+    SubmitSuccessComponent,
+    AdminComplianceComponent,
+    AdminRequestComponent
+  ],
+  imports: [
+    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'compliances', component: CompliancesComponent },
+      { path: 'compliance-cart', component: ComplianceCartComponent },
+      { path: 'login', component: LoginComponent },
+
+      { path: 'check-list', component: CheckListComponent, canActivate:[AuthGuardService] },
+      { path: 'submitsuccess', component: SubmitSuccessComponent, canActivate:[AuthGuardService]},
+      { path: 'my-request', component: MyRequestComponent, canActivate:[AuthGuardService]},
+
+      { path: 'admin/compliance', component: AdminComplianceComponent,canActivate:[AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/request', component: AdminRequestComponent,canActivate:[AuthGuardService, AdminAuthGuardService] },
+    ])
+
+
+
+
+
+  ],
+  providers: [ 
+  AuthService,
+  AuthGuardService,
+  UserService,
+  AdminAuthGuardService
+],
+
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
