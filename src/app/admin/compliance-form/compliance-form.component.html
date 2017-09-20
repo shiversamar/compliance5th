@@ -2,6 +2,7 @@
  <!-- 1st  -->
       <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="save(f.value)">
+
           <div class="form-group">
             <label for="title">Title</label>
             <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
@@ -15,7 +16,7 @@
           <div class="form-group">
             <label for="revision">Revision</label>
             <div class="input-group">
-              <span class="input-group-addon">Revision</span>
+              <span class="input-group-addon">@</span>
               <input #revision="ngModel" ngModel name="revision" id="revision" type="number" class="form-control" required [min]="0">
             </div>
             <div class="alert alert-danger" *ngIf="revision.touched && revision.invalid">
@@ -24,19 +25,14 @@
             </div>
           </div>
 
-          <!-- <div class="form-group">
-              <label for="description">Description</label>
-              <div class="input-group">
-                <span class="input-group-addon">Description</span>
-                <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required [min]="50">
-              </div>
-              <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                <div *ngIf="description.errors.required"> Description is required please..</div>
-                <div *ngIf="description.errors.min"> Description should 50length.</div>
-              </div>
-            </div> -->
-
-
+          
+          <div class="form-group">
+            <label for="desc">Description</label>
+            <input #desc="ngModel" ngModel name="desc" id="desc" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="desc.touched && desc.invalid">
+              Description is required please..
+            </div>
+          </div>
 
 
 
@@ -71,8 +67,9 @@
           <div class="card" style="width: 20rem;">
               <img class="card-img-top" [src]="imageUrl.value">
               <div class="card-body">
-                <h4 class="card-title">{{ title.value }}</h4>
+                <h6 class="card-title">{{ title.value }}</h6>
                 <p class="card-text">{{ revision.value }}</p>
+                <p class="card-text">{{ desc.value }}</p>
               </div>
             </div>
         

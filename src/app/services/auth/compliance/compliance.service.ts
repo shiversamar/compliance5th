@@ -10,4 +10,8 @@ export class ComplianceService {
     return this.db.list('/compliances').push(compliance);
   }
 
+  getAll() {
+    return this.db.list('/compliances');
+  }
+
 }

@@ -1,1 +1,26 @@
-<a routerLink="/admin/compliance/new" class="btn btn-primary">New Compliance</a>
+<p> 
+    <a routerLink="/admin/compliance/new" class="btn btn-primary">New Compliance</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Revision</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of compliances$ | async">
+            <td>{{ c.title}}</td>
+            <td>{{ c.revision}}</td>
+            <td>{{ c.desc}}</td>
+            <td>
+                <a [routerLink]="['/admin/compliances/', c.$key]">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+

@@ -21,7 +21,7 @@ export class ComplianceFormComponent implements OnInit {
 
   save(compliance) {
     this.complianceService.create(compliance);
-    this.router.navigate(['/admin/products']);
+    this.router.navigate(['/admin/compliance']);
 
   }
 
