@@ -70,11 +70,7 @@ import { ComplianceFormComponent } from './admin/compliance-form/compliance-form
       { path: 'submitsuccess', component: SubmitSuccessComponent, canActivate: [AuthGuardService] },
       { path: 'my-request', component: MyRequestComponent, canActivate: [AuthGuardService] },
 
-      {
-        path: 'admin/compliance',
-        component: AdminComplianceComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService]
-      },
+
 
       {
         path: 'admin/compliance/new',
@@ -82,7 +78,20 @@ import { ComplianceFormComponent } from './admin/compliance-form/compliance-form
         canActivate: [AuthGuardService, AdminAuthGuardService]
       },
 
+      {
+        path: 'admin/compliance/:id',
+        component: ComplianceFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
 
+
+      {
+        path: 'admin/compliance',
+        component: AdminComplianceComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+
+      
 
       {
         path: 'admin/request',

@@ -14,4 +14,17 @@ export class ComplianceService {
     return this.db.list('/compliances');
   }
 
+  get(complianceId) {
+    return this.db.object('/compliances/' + complianceId);
+  }
+
+  update(complianceId, compliance) {
+    return this.db.object('/compliances/' + complianceId).update(compliance);
+  }
+
+  delete(complianceId) {
+    return this.db.object('/compliances/' + complianceId).remove();
+  }
+
+
 }
