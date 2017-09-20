@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
-
+import { DataTableModule } from 'angular-4-data-table';
+// import { ActivatedRoute } from "@angular/router";
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
@@ -55,13 +56,15 @@ import { ComplianceFormComponent } from './admin/compliance-form/compliance-form
   imports: [
     BrowserModule,
     FormsModule,
+    DataTableModule,
+    // ActivatedRoute,
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: CompliancesComponent },
       { path: 'compliances', component: CompliancesComponent },
       { path: 'compliance-cart', component: ComplianceCartComponent },
       { path: 'login', component: LoginComponent },

@@ -1,3 +1,61 @@
-<p>
-  compliances works!
-</p>
+  <div class="row">
+    <div class="col-3">
+      <h4>All Company Name</h4>
+        <div class="list-group">
+          <a *ngFor="let c of companies$ | async"
+              routerLink="/"
+              [queryParams]="{ company: c.$key }"
+              class="list-group-item list-group-item-action"
+              [class.active]="company === c.$key"
+              >
+              {{c.name}}
+          </a>
+        </div>
+    </div>
+
+
+    <div class="col-9">
+      <h4>List of Compliance</h4>
+      <div class="row">
+          <ng-container *ngFor="let c of compliances$ | async; let i = index">
+              <div class="col">
+              <div class="card" style="max-width: 15rem;">
+                <img class="card-img-top" [src]="c.imageUrl">
+                <div class="card-body">
+                  <h5 class="card-title">{{ c.title }}</h5>
+                  <p class="card-text">{{ c.revision }}</p>
+                  <!-- <p class="card-text">{{ c.datevalidity }}</p> -->
+                  <p class="card-text">{{ c.datevalidity | date:'yyyy-MM-dd':true }}</p> 
+                  <p class="card-text">{{ c.desc }}</p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                  <a href="#" class="btn btn-success">Send Request email</a>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+          </ng-container>    
+        </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
