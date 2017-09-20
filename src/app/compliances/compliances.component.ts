@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplianceService } from "../services/auth/compliance/compliance.service";
 import { CompanyService } from "../services/auth/company.service";
-// import { ActivatedRoute } from "@angular/router/src";
-import { ActivatedRoute } from "@angular/router/router";
-// import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-compliances',
   templateUrl: './compliances.component.html',
   styleUrls: ['./compliances.component.css']
 })
-export class CompliancesComponent {
+export class CompliancesComponent{
   compliances$;
   companies$;
   company: string;
@@ -26,9 +25,7 @@ export class CompliancesComponent {
 
     route.queryParamMap.subscribe(params => {
       this.company = params.get('company');
-
     });
    }
-
-
 }
+// npm install webpack && npm install webpack-dev-serve
