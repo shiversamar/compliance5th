@@ -9,8 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
-
-import { AppUser } from '/Users/amar/Desktop/compliance5th/src/app/models/app-user';
+// import { AppUser } from '../../models/app-user';
+// /Users/amarshivers/Desktop/compliance5th/src/app/models/app-user.ts
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
@@ -49,7 +49,11 @@ import { ComplianceFormComponent } from './admin/compliance-form/compliance-form
     AdminComplianceComponent,
     AdminRequestComponent,
     ComplianceFormComponent
+
   ],
+
+
+
   imports: [
     BrowserModule,
     FormsModule,

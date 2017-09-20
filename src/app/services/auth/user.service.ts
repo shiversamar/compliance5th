@@ -1,4 +1,3 @@
-// import { AppUser } from '/Users/amar/Desktop/compliance5th/src/app/models/app-user';
 import { AngularFireDatabase , FirebaseObjectObservable} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';

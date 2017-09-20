@@ -1,6 +1,7 @@
-import { AppUser } from '/Users/amar/Desktop/compliance5th/src/app/models/app-user' ;
+
 import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { AppUser } from "../models/app-user";
 
 @Component({
   selector: 'navbar',
