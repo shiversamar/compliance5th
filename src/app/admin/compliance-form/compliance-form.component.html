@@ -35,8 +35,6 @@
             </div>
           </div>
 
-
-
           <div class="form-group">
             <label for="desc">Description</label>
             <input #desc="ngModel" [(ngModel)]="compliance.desc" name="desc" id="desc" type="text" class="form-control" required>
@@ -44,8 +42,6 @@
               Description is required please..
             </div>
           </div>
-
-
 
           <div class="form-group">
             <label for="company">Company</label>
@@ -74,18 +70,18 @@
       </div> <!-- end of 1st column -->
 
       <div class="col-md-6">
-          <div *ngIf="compliance.title" class="card" style="width: 20rem;">
-              <img class="card-img-top" [src]="compliance.imageUrl" *ngIf="compliance.imageUrl">
+          <compliance-card [compliance]="compliance" [show-actions]="false"></compliance-card>
+      </div> <!-- end of 2nd column -->    
+ </div><!-- end of row-->
+
+ 
+
+          <!-- <div class="card" style="width: 20rem;">
+              <img class="card-img-top" [src]="compliance.imageUrl">
               <div class="card-body">
                 <h6 class="card-title">{{ compliance.title }}</h6>
                 <p class="card-text">{{ compliance.revision }}</p>
                 <p class="card-text">{{ compliance.desc }}</p>
                 <p class="card-text">{{ compliance.datevalidity | date:'yyyy-MM-dd' }}</p>
               </div>
-            </div>
-        
-      </div> <!-- end of 2nd column -->
-      
-    
-      
- </div><!-- end of row-->
+            </div>       -->

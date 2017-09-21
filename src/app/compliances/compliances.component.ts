@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplianceService } from "../services/auth/compliance/compliance.service";
-import { CompanyService } from "../services/auth/company.service";
 import { ActivatedRoute } from "@angular/router";
-
+import { Compliance } from "../models/compliance";
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-compliances',
@@ -10,22 +10,26 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./compliances.component.css']
 })
 export class CompliancesComponent{
-  compliances$;
-  companies$;
+  compliances: Compliance[] = [];
+  filteredCompliances: Compliance[] = [];
   company: string;
 
   constructor (
     route: ActivatedRoute,
-    complianceService: ComplianceService, 
-    companyService: CompanyService ) 
-    
-    {
-    this.compliances$ = complianceService.getAll();
-    this.companies$ = companyService.getCompanies();
+    complianceService: ComplianceService) {
 
-    route.queryParamMap.subscribe(params => {
-      this.company = params.get('company');
-    });
+    complianceService
+      .getAll()
+      .switchMap(compliances => {
+      this.compliances = compliances;
+      return route.queryParamMap;
+      })     
+      .subscribe(params => {
+        this.company = params.get('company');
+
+        this.filteredCompliances = (this.company) ?
+          this.compliances.filter(c => c.company === this.company) :
+          this.compliances;
+      }); 
    }
 }
-// npm install webpack && npm install webpack-dev-serve

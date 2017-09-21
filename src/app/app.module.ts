@@ -9,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from 'angular-4-data-table';
-// import { ActivatedRoute } from "@angular/router";
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth/auth-guard.service';
@@ -17,7 +16,6 @@ import { UserService } from './services/auth/user.service';
 import { AdminAuthGuardService } from './services/auth/admin-auth-guard.service';
 import { CompanyService } from './services/auth/company.service';
 import { ComplianceService } from './services/auth/compliance/compliance.service';
-
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,6 +29,8 @@ import { SubmitSuccessComponent } from './submit-success/submit-success.componen
 import { AdminComplianceComponent } from './admin/admin-compliance/admin-compliance.component';
 import { AdminRequestComponent } from './admin/admin-request/admin-request.component';
 import { ComplianceFormComponent } from './admin/compliance-form/compliance-form.component';
+import { ComplianceFilterComponent } from './compliances/compliance-filter/compliance-filter.component';
+import { ComplianceCardComponent } from './compliance-card/compliance-card.component';
 
 
 
@@ -47,7 +47,9 @@ import { ComplianceFormComponent } from './admin/compliance-form/compliance-form
     SubmitSuccessComponent,
     AdminComplianceComponent,
     AdminRequestComponent,
-    ComplianceFormComponent
+    ComplianceFormComponent,
+    ComplianceFilterComponent,
+    ComplianceCardComponent
 
   ],
 

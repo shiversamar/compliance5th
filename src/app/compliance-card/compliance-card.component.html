@@ -1,0 +1,14 @@
+<div *ngIf="compliance.title" class="card">
+  <img *ngIf="compliance.imageUrl" class="card-img-top" [src]="compliance.imageUrl" alt="{{ compliance.title }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ compliance.title }}</h5>
+            <p class="card-text">{{ compliance.revision }}</p>
+            <!-- <p class="card-text">{{ c.datevalidity }}</p> -->
+            <p class="card-text">{{ compliance.datevalidity | date:'yyyy-MM-dd':true }}</p> 
+            <p class="card-text">{{ compliance.desc }}</p>
+                      
+    </div>
+    <div class="card-foooter"> 
+         <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Add to Cart</a>
+    </div>
+</div>
